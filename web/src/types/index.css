@@ -1,0 +1,91 @@
+export type UserRole = "admin" | "user";
+
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+  avatar: string;
+  joinedDate: string;
+  entriesCount: number;
+};
+
+export type MediaItem = {
+  id: string;
+  type: "image" | "video";
+  url: string;
+  thumbnailUrl?: string;
+  caption?: string;
+  motionEffect: MotionEffect;
+};
+
+export type MotionEffect =
+  | "kenburns"
+  | "slide"
+  | "fade"
+  | "zoom"
+  | "none";
+
+export type TypingStyle = {
+  id: string;
+  name: string;
+  fontFamily: string;
+  color: string;
+  fontWeight: number;
+  italic: boolean;
+  letterSpacing: string;
+  lineHeight: number;
+  preview: string;
+};
+
+export type DiaryEntry = {
+  id: string;
+  title: string;
+  content: string;
+  mood: Mood;
+  tags: string[];
+  media: MediaItem[];
+  typingStyleId: string;
+  createdAt: string;
+  updatedAt: string;
+  authorId: string;
+  authorName: string;
+  authorAvatar: string;
+  wordCount: number;
+  isPrivate: boolean;
+};
+
+export type Mood =
+  | "happy"
+  | "excited"
+  | "calm"
+  | "neutral"
+  | "thoughtful"
+  | "sad"
+  | "angry"
+  | "grateful";
+
+export type Notification = {
+  id: string;
+  type: "info" | "success" | "warning" | "error";
+  title: string;
+  message: string;
+  timestamp: string;
+  read: boolean;
+  actionUrl?: string;
+};
+
+export type ChartData = {
+  name: string;
+  value: number;
+  label?: string;
+};
+
+export type ActivityLog = {
+  id: string;
+  userId: string;
+  userName: string;
+  action: string;
+  timestamp: string;
+  details: string;
+};
