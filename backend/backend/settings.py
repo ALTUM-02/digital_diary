@@ -123,3 +123,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Graphene
+GRAPHENE = {
+    "SCHEMA": "diaryverse.schema.schema",
+    "SCHEMA_OUTPUT": "schema.graphql",
+    "MIDDLEWARE": [
+        "api.middleware.JWTMiddleware",
+    ],
+}
+
+# CORS — allow frontend dev server
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+# JWT settings (simple token)
+JWT_SECRET = "diaryverse-jwt-secret-change-in-production"
+JWT_EXPIRATION = timedelta(days=7)
+
