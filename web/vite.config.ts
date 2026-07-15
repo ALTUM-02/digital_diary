@@ -1,17 +1,24 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vite.dev/config/
 import path from "path";
 
-export default defineConfig({
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+// https://vitejs.dev/config/
+export default defineConfig(({ mode }) => ({
+  server: {
+    host: "::",
+    port: 8080,
+    hmr: {
+      overlay: false,
+    },
+  },
   plugins: [react()],
-  test: {
-    globals: true,
-    include: ["src/**/*.{test,spec}.{ts,tsx}"],
-    exclude: ["src/**/*.browser.{test,spec}.{ts,tsx}"],
-  },
   resolve: {
-    alias: { "@": path.resolve(__dirname, "./src") },
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
   },
-});
+  // Expose both VITE_* (Vite default) and EXPO_PUBLIC_* (Rork's cross-platform
+  // public-env convention, written by tools like getOrCreateAuthConfig).
+  envPrefix: ["VITE_", "EXPO_PUBLIC_"],
+}));
