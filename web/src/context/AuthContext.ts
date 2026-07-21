@@ -22,7 +22,7 @@ function AuthProviderImpl() {
           if (stored && mounted) {
             setUser(JSON.parse(stored) as User);
           }
-        } cat
+        } catch {
           // ignore
         }
         if (mounted) setIsLoading(false);
