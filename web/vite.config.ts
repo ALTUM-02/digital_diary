@@ -4,12 +4,21 @@ import path from "path";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
 
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+
+    // Prevent multiple copies of React from being loaded
+    dedupe: [
+      "react",
+      "react-dom",
+    ],
   },
 
   server: {
