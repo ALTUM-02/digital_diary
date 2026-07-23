@@ -15,7 +15,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/uti
 
 const TOOLTIP_STYLE = {
   backgroundColor: "hsl(var(--card))",
